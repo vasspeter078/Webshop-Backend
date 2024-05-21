@@ -143,7 +143,7 @@ export const getByName = async (req, res, next) => {
         return res.status(404).json({message: "No Products Found"});
     }
     let products = allProducts.filter((product) => {
-        return product.name.toLowerCase().includes(req.params.name.toLowerCase());
+        return product.name.toLowerCase().includes(req.params.name.toLowerCase()) || product.category.toLowerCase() === req.params.name.toLowerCase();
     });
     return res.status(200).json({products});
 }
